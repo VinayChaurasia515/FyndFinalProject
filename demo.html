@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <table>
+  <tr>
+    <td>Harry</td>
+  </tr>
+  <tr>
+    <td>Simon</td>
+  </tr>
+  <tr>
+    <td>Maria</td>
+  </tr>
+  <tr>
+    <td>Victory</td>
+  </tr>
+</table>
+<script>
+    var tables = document.getElementsByTagName('table');
+    var table = tables[tables.length - 1];
+    var rows = table.rows;
+    for(var i = 0, td; i < rows.length; i++){
+        td = document.createElement('td');
+        td.appendChild(document.createTextNode(i + 1));
+        rows[i].insertBefore(td, rows[i].firstChild);
+    }
+</script>
+
+        <!-- <ul id="items-list"></ul>
+
+        <Script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.23.0/axios.min.js"></Script>
+        <script>
+            const ul = document.querySelector( '#items-list' );
+
+            const items = [
+                { id: 11, name: 'Parle G' },
+                { id: 22, name: 'Colgate' },
+                { id: 33, name: 'Shampoo' }
+            ];
+
+            for( let i = 0; i < items.length; i++ ) {
+                ul.innerHTML += `
+                    <li data-id="${items[i].id}" data-name="${items[i].name}">
+                        ${items[i].name}
+                        <button class="present">Present</button>
+                        <button class="absent">Absent</button>
+                    </li>`;
+            }
+        </script> -->
+
+        <!-- <script>
+            const buttons = document.querySelectorAll( '#items-list button' );
+
+            // function addToCart( id ) {
+            //     // use axios to make post request
+            // }
+
+            function onClickButton( event ) {
+                const button = event.target;
+                const li = button.closest( 'li' );
+                const id = li.getAttribute( 'data-id' );
+                const name=li.getAttribute('data-name')
+                const absent = button.classList.contains( 'absent' );
+
+                console.log( id+"   "+name );
+               console.log( absent );
+
+          //      addToCart( id );
+            }
+
+            for( let i = 0; i < buttons.length; i++ ) {
+                buttons[i].addEventListener( 'click', onClickButton );
+            }
+        </script> -->
+    </body>
+</html>

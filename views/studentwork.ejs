@@ -1,0 +1,86 @@
+<%- include('partials/header') %>
+<style>
+    img {
+    height: 50px;
+    width: 50px;
+    float:right;
+}
+h1 {
+    display: inline;
+}
+</style>
+
+<div class="jumbotron centered">
+  <div class="container">
+    <h1 style="margin: 0px;padding: 0px;"> Student Attendance Report's </h1>
+    <!-- <form action="/attendance/downloadreport" method="get">
+
+      <input  type="submit"  role="button" title="print the report"><img src="https://findicons.com/files/icons/2795/office_2013_hd/2000/excel.png" height="60px" width="60px"/>
+    </form> -->
+       <div class="container-fluid dropdown-divider" style="border-top: 3px solid rgb(97, 95, 95); "></div>
+
+    <table class="table table-bordered table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date</th>
+            <th scope="col">Batch</th>
+            <th scope="col"> Name</th>            
+            <th scope="col">Mobile Number</th>
+            <th scope="col">Email ID</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <!-- <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td><script>document.write(new Date().getDate()+' / '+(new Date().getMonth()+1)+' / '+new Date().getFullYear())</script></td>
+            <td>101</td>
+            <td>Vinay</td>
+            <td>7860655469</td>
+            <td>Present</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td><script>document.write(new Date().getDate()+' / '+(new Date().getMonth()+1)+' / '+new Date().getFullYear())</script></td>
+            <td>101</td>
+            <td>Vinay</td>
+            <td>7860655469</td>
+            <td>Present</td>
+          </tr>
+        </tbody> -->
+        <tbody>
+          <% r.forEach(function( eachStudent){ %>
+
+              <tr>
+                  <td>
+                      <%= 1 %>
+                  </td>
+                  
+                  <td>
+                      <%= eachStudent.Date %>
+                  </td>
+                  <td>
+                    <%= 'NODEJS' %>
+                </td>
+                  <td>
+                      <%=eachStudent.StudentName%>
+                  </td>
+                  <td>
+                      <%=eachStudent.StudentMobileNo%>
+                  </td>
+                  <td>
+                      <%=eachStudent.StudentEmailId%>
+                  </td>
+                  <td>
+                    <%=eachStudent.Status%>
+                </td>
+              </tr>
+              <% }) %>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<%- include('partials/footer') %>

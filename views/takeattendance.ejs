@@ -1,0 +1,96 @@
+<%- include('partials/header') %>
+
+<div class="jumbotron centered">
+        <div class="container">
+            <h2 style="text-align: center; display: inline;">Date : </h2>
+            <h2 id="displayDateTime" style=" display: inline;"> </h2>
+
+            <script>
+                var today = new Date();
+                var year = today.getFullYear();
+                var mes = today.getMonth() + 1;
+                var dia = today.getDate();
+                var date = dia + "-" + mes + "-" + year;
+                //document.write('Attendance Date  ::  ', date)
+                document.getElementById("displayDateTime").innerHTML = date;
+            </script>
+
+            <!-- <script>
+                var table = document.getElementById('tab').rows.length
+                var rIndex=0;
+                for (var i = 0; i < table; i++) {
+                    table.rows[i].onclick = function () {
+                        rIndex = this.rowIndex;
+                        console.log(rIndex)
+                    }
+                }
+            </script> -->
+
+            <div>
+                <table id="table" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Roll Number</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Mobile Number</th>
+                            <th scope="col">Email Id</th>
+                            <th scope="col">Attendance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% r.forEach(function( eachStudent){ %>
+                            <form action="../attendance/takeattendance" method="post">
+                            <tr>
+                                <td>
+                                    <%= 1 %>
+                                </td>
+                                <td>
+                                    <%= 1033 %>
+                                </td>
+                                <td>
+                                    <input type="hidden" name="StudentName" value="<%= (eachStudent.StudentName).trim()%> ">
+                                    <%=eachStudent.StudentName%>
+                                </td>
+                                <td>
+                                    <input type="hidden" name="StudentMobileNo" value="<%= eachStudent.StudentMobileNo %> ">
+                                    <%=eachStudent.StudentMobileNo%>
+                                </td>
+                                <td>
+                                    <input type="hidden" name="StudentEmailId" value="<%= eachStudent.StudentEmailId %> ">
+                                    <%=eachStudent.StudentEmailId%>
+                                </td>
+                                <td>
+                                    <input class="btn btn-success btn-lg" title="send pool for attendance" value="Send Pool" type="submit"></input>
+                                    <!-- <a class="btn btn-danger btn-lg" href="/attendance/takeattendance"role="button">Absent</a> -->
+                                </td>
+                            </tr>
+                            </form>
+                            <% }) %>
+                    </tbody>
+                </table>
+                <div class="container-fluid dropdown-divider" style="border-top: 3px solid rgb(97, 95, 95); "></div>
+                <form action="../attendance/getstudentstatus" method="GET">
+                    <input type="submit" value="Get Student's Status" class="btn btn-info">
+                </form>
+
+                <!-- <script>
+                    $('#btnEnviarDatos').click(function () {
+                        var data = { trs: [] };
+                        $('#datatable-responsive tbody tr').each(function (index) {
+                            var tr = {};
+                            $(this).children('td').each(function (index2) {
+                                tr['campo' + index2] = $(this).text();
+                            });
+                            data.trs.push(tr);
+                        });
+                        alert(JSON.stringify(data));
+                    });
+
+                </script> -->
+
+            </div>
+        </div>
+    </div>
+
+<%- include('partials/footer') %>
